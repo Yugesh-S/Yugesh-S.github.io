@@ -119,13 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Typing effect for subtitle
     const subtitle = document.querySelector('.type-wrap');
     if (subtitle) {
-        const textToType = subtitle.innerText;
-        subtitle.innerText = '';
+        const textToType = subtitle.textContent;
+        subtitle.textContent = '';
         
         let charIndex = 0;
         const typeInterval = setInterval(() => {
             if(charIndex < textToType.length) {
-                subtitle.innerText += textToType.charAt(charIndex);
+                subtitle.textContent += textToType.charAt(charIndex);
                 charIndex++;
             } else {
                 clearInterval(typeInterval);
