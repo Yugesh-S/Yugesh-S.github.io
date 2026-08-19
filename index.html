@@ -24,6 +24,9 @@
     <!-- Quantum Spray Transition Canvas -->
     <canvas id="transition-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:999998; pointer-events:none; opacity:0; transition:opacity 0.5s ease;"></canvas>
 
+    <!-- Matrix Rain Easter Egg Canvas -->
+    <canvas id="matrix-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:99999; pointer-events:none; display:none;"></canvas>
+
     <!-- Projects World SPA (Hidden by default) -->
     <div id="projects-world" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999; opacity: 0; transition: opacity 1s ease;">
         <a href="#" class="back-btn" id="return-btn">
@@ -36,6 +39,26 @@
         <div class="carousel-container" id="projects-carousel">
             
             <!-- Project 1 -->
+            <div class="glass-card carousel-item" data-tilt>
+                <div class="project-content">
+                    <div class="project-header">
+                        <span class="project-date">2026</span>
+                        <h3>Smart Temperature & Gas Detection System</h3>
+                        <a href="https://github.com/Yugesh-S/Smart-Temperature-Gas-Detection-System" target="_blank" class="repo-link">Access Database</a>
+                    </div>
+                    <p>A real-time environmental monitoring system with multi-sensor fusion for temperature and hazardous gas detection with automated alerts.</p>
+                    <ul class="terminal-list">
+                        <li>Interfaced DHT11 temperature/humidity sensor and MQ gas sensor with Arduino UNO via ADC.</li>
+                        <li>Displayed real-time readings on a 16x2 I2C LCD using the LiquidCrystal_I2C library.</li>
+                        <li>Implemented threshold-based alert system with LED and buzzer for gas levels exceeding 400 ppm and temperatures above 28°C.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span>Arduino UNO</span><span>DHT11</span><span>MQ Sensor</span><span>I2C LCD</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
             <div class="glass-card carousel-item" data-tilt>
                 <div class="project-content">
                     <div class="project-header">
@@ -55,7 +78,7 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 3 -->
             <div class="glass-card carousel-item" data-tilt>
                 <div class="project-content">
                     <div class="project-header">
@@ -75,7 +98,7 @@
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Project 4 -->
             <div class="glass-card carousel-item" data-tilt>
                 <div class="project-content">
                     <div class="project-header">
@@ -95,7 +118,7 @@
                 </div>
             </div>
 
-            <!-- Project 4 -->
+            <!-- Project 5 -->
             <div class="glass-card carousel-item" data-tilt>
                 <div class="project-content">
                     <div class="project-header">
@@ -114,7 +137,7 @@
                 </div>
             </div>
 
-            <!-- Project 5 -->
+            <!-- Project 6 -->
             <div class="glass-card carousel-item" data-tilt>
                 <div class="project-content">
                     <div class="project-header">
@@ -145,9 +168,9 @@
 
     <div class="cursor-glow"></div>
     
-    <!-- Dynamic Background Grid & Particles -->
-        <div class="bg-grid"></div>
-        <canvas id="particle-canvas" class="hide-initially"></canvas>
+    <!-- Animated PCB Background -->
+    <div class="pcb-grid"></div>
+    <canvas id="particle-canvas" class="hide-initially"></canvas>
 
     <!-- Scroll Progress Circuit Line -->
     <svg class="scroll-circuit" viewBox="0 0 100 1000" preserveAspectRatio="none">
@@ -162,6 +185,14 @@
             <a href="#experience" class="nav-link">Experience</a>
             <a href="projects.html" class="nav-link" id="projects-nav-link">Projects</a>
             <a href="#education" class="nav-link">Education</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <!-- Circuit Breaker Theme Toggle -->
+        <div class="circuit-breaker" id="theme-toggle" title="Toggle Theme">
+            <div class="breaker-track">
+                <div class="breaker-handle"></div>
+            </div>
+            <span class="breaker-label">AC/DC</span>
         </div>
     </nav>
 
@@ -170,11 +201,34 @@
         <section id="hero" class="section hero-section">
             <div class="hero-content hide-initially">
                 <div class="status-badge"><span class="pulse"></span> Grid Synchronized</div>
-                <h1 class="glitch-text" data-text="YUGESH S">YUGESH S</h1>
+                <h1 class="glitch-text" data-text="YUGESH S" id="hero-name">YUGESH S</h1>
                 <h2 class="subtitle type-wrap">Electrical and Electronics Engineer</h2>
                 <p class="hero-desc">Specializing in circuit design, power electronics, control systems, and automated hardware infrastructures.</p>
+                
+                <!-- Interactive Hacker Terminal -->
+                <div class="hacker-terminal">
+                    <div class="term-header">
+                        <span class="term-dot red"></span>
+                        <span class="term-dot yellow"></span>
+                        <span class="term-dot green"></span>
+                        <span class="term-title">visitor@yugesh-portfolio:~$</span>
+                    </div>
+                    <div class="term-body" id="terminal-output">
+                        <div class="term-line"><span class="term-response">System initialized. Type <span style="color:var(--accent-cyan)">help</span> to see available commands.</span></div>
+                    </div>
+                    <div class="term-input-line">
+                        <span class="term-prompt">❯</span>
+                        <input type="text" id="terminal-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="type a command...">
+                        <span class="term-cursor"></span>
+                    </div>
+                </div>
+
                 <div class="hero-cta">
                     <button class="btn btn-primary" id="contact-btn" data-email="sivayugesh90@gmail.com">Copy Email Address</button>
+                    <button class="btn-schematic" id="resume-btn">
+                        <span class="btn-schematic-text">⬇ Download Schematics</span>
+                        <div class="voltage-meter"><div class="voltage-fill"></div></div>
+                    </button>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/yugesh-s-5b5b79280/" target="_blank" class="icon-link" aria-label="LinkedIn">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -194,6 +248,10 @@
                 <div class="glass-card about-text reveal">
                     <p>Electrical and Electronics Engineer with specialized experience in circuit design, power management topologies, and hardware systems.</p>
                     <p>Utilizes rigorous validation for hardware infrastructures. Experience in designing efficient, automated power management systems for critical infrastructures, achieving up to 35% reduction in energy consumption.</p>
+                    <!-- Interactive Skills Radar Chart -->
+                    <div class="radar-chart-container">
+                        <canvas id="radar-chart"></canvas>
+                    </div>
                 </div>
                 
                 <div class="skills-container reveal">
@@ -294,8 +352,60 @@
                 </div>
             </div>
         </section>
+
+        <!-- Oscilloscope Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title reveal">Signal Transmission</h2>
+            <div class="oscilloscope-container reveal">
+                <div class="scope-screen">
+                    <canvas id="scope-canvas"></canvas>
+                    <div class="scope-readouts">
+                        <div class="readout">
+                            <span class="readout-label">FREQ</span>
+                            <span class="readout-value">24/7</span>
+                        </div>
+                        <div class="readout">
+                            <span class="readout-label">STATUS</span>
+                            <span class="readout-value active-signal">● ONLINE</span>
+                        </div>
+                        <div class="readout">
+                            <span class="readout-label">CH1</span>
+                            <span class="readout-value">EMAIL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="scope-controls">
+                    <div class="contact-channel">
+                        <h3>📧 Primary Channel</h3>
+                        <button class="scope-btn" id="scope-email-btn" data-email="sivayugesh90@gmail.com">
+                            sivayugesh90@gmail.com
+                            <span class="copy-flash">COPIED!</span>
+                        </button>
+                    </div>
+                    <div class="contact-channel">
+                        <h3>🔗 Data Links</h3>
+                        <div class="scope-links">
+                            <a href="https://www.linkedin.com/in/yugesh-s-5b5b79280/" target="_blank" class="scope-link">
+                                <span class="link-indicator"></span> LinkedIn
+                            </a>
+                            <a href="https://github.com/Yugesh-S" target="_blank" class="scope-link">
+                                <span class="link-indicator"></span> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-channel">
+                        <h3>📍 Location Signal</h3>
+                        <p class="location-text">Coimbatore, India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <footer>
+            <div class="led-counter">
+                <span class="led-label">SESSION:</span>
+                <span class="led-digits" id="visit-counter">0000</span>
+            </div>
             <p>Engineered by Yugesh S &copy; 2024</p>
             <div class="footer-links">
                 <a href="mailto:sivayugesh90@gmail.com" class="email-link">sivayugesh90@gmail.com</a> | 
